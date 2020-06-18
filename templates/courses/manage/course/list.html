@@ -1,0 +1,24 @@
+{% extends "basee.html" %}
+{% block body %}
+  <h1>My courses</h1>
+  <div class="module">
+    {% for course in object_list %}
+      <div class="course-info">
+        <h3>{{ course.title }}</h3>
+        <p>
+          <a class="btn btn-primary" href="{% url "course_edit" course.id %}" role="button">Edit</a>
+          <a class="btn btn-primary" href="{% url "course_delete" course.id %}" role="button">Delete</a>
+            <a class="btn btn-primary" href="{% url "course_module_update" course.id %}" role="button">Edit modules</a>
+            {% if course.modules.count > 0 %}
+            <a class="btn btn-primary" href="{% url "module_content_list" course.modules.first.id %}" role="button">Manage contents</a>
+            {% endif %}
+        </p>
+      </div>
+    {% empty %}
+      <p>You haven't created any courses yet.</p>
+    {% endfor %}
+    <p>
+      <a class="btn btn-primary" href="{% url "course_create" %}" role="button">Create new course</a>
+    </p>
+  </div>
+{% endblock %}

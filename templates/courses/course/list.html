@@ -1,0 +1,60 @@
+{% extends "basee.html" %}
+{% block body %}
+  <div class="container">
+  <div class="row">
+  <div class="col-md-4">
+    <h1>
+      Course Overview
+  </h1>
+    <div class="module">
+    {% for course in courses %}
+      {% with subject=course.subject %}
+    <div class="card" style="width: 30rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{% url "course_detail" course.slug %}">{{ course.title }}</a></h5>
+    <p class="card-text"><p>
+            {{ course.overview }} </p>
+          <p>
+          <a href="{% url "course_list_subject" subject.slug %}">{{ subject }}</a>.
+            {{ course.total_modules }} modules.
+            Instructor: {{ course.owner.get_username }}
+        </p>
+  </div>
+</div>
+     {% endwith %}
+    {% endfor %}
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}
+ <!-- <div class="contents">
+    <h3>Subjects</h3>
+    <ul id="modules">
+      <li {% if not subject %}class="selected"{% endif %}>
+        <a href="{% url "course_list" %}">All</a>
+      </li>
+      {% for s in subjects %}
+        <li {% if subject == s %}class="selected"{% endif %}>
+          <a href="{% url "course_list_subject" s.slug %}">{{ s.title }}<br><span>{{ s.total_courses }} courses</span></a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="module">
+    {% for course in courses %}
+      {% with subject=course.subject %}
+        <h3>
+          <a href="{% url "course_detail" course.slug %}">{{ course.title }}</a>
+        </h3>
+        <p>
+            {{ course.overview }} </p>
+          <p>
+          <a href="{% url "course_list_subject" subject.slug %}">{{ subject }}</a>.
+            {{ course.total_modules }} modules.
+            Instructor: {{ course.owner.get_username }}
+        </p>
+    {% endwith %}
+  {% endfor %}
+  </div>-->

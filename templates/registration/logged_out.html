@@ -1,0 +1,8 @@
+{% extends 'baseee.html' %}
+{% block body %}
+  <h1>Logged out</h1>
+  <div class="module">
+    <p>You have been successfully logged out.
+       You can <a class="btn btn-primary" href="{% url "login" %}" role="button">login again</a>.</p>
+  </div>
+{% endblock %}
